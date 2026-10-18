@@ -1,37 +1,31 @@
 package String;
 
-public class RemoveDuplicateCharacter {
+public class RemoveDuplicateCharacterBruteForce{
     public static void main(String [] args){
 //        Remove Duplicate Characters
 //        Input: "programming" → Output: "progamin"
         String word="programming";
-        String ans=rdc(word);
+        String ans=rdcBruteForce(word);
         System.out.println(ans);
 
     }
-    public static String rdc(String w){
+    static String rdcBruteForce(String w){
         String a="";
-        int range=0;
         for(int i=0;i<w.length();i++){
-            char ch=w.charAt(i);
+            char ch=w.charAt(i);// this will contain every character of string w
+            boolean found=false;
+            for(int j=0;j<a.length();j++){
+                if(ch==a.charAt(j)){
+                    found=true;
+                    break;
+                }
+            }
+            if(!found){
+                a+=ch;
+            }
+        }
 
-           int c= frequency(w,ch,range);
-            if(c==1){
-                a+=c;
-            }
-        }
         return a;
-    }
-    static int frequency(String s,char target,int range){
-        ++range;
-        int count=0;
-        for(int i=0;i<range;i++){
-            char ch=s.charAt(i);
-            if(ch==target){
-                count++;
-            }
-        }
-        return count;
     }
 
 }
